@@ -7,7 +7,7 @@
 | NVIDIA DGX Spark (GB10) | 2 | 128 GB unified memory, Blackwell sm_121 |
 | QSFP112 DAC direct-attach cable (400GbE, Ethernet-mode only) | 1 | Supported: Amphenol `NJAAKK-N911`, Luxshare `LMTQF022-SD-R` |
 | Gigabit switch / home router | 1 | management LAN (wired or Wi-Fi) |
-| Mac / PC with NVIDIA Sync | 1 | used by Cluster Assistant |
+| Computer with NVIDIA Sync (Windows / macOS / Ubuntu) | 1 | used by Cluster Assistant |
 
 > Official requirements: system software ≥ **2026-04**; the cable must be an officially supported
 > QSFP112 DAC — an ordinary 100G/25G cable will not negotiate 200G.
@@ -51,4 +51,3 @@ Also confirm the management network (wired `enP7s7` or Wi-Fi `wlP9s9`) has an IP
 - [DGX Spark User Guide (networking)](https://docs.nvidia.com/dgx/dgx-spark/)
 - [Cluster Assistant (supported cables)](https://docs.nvidia.com/sync/latest/cluster-assistant.html)
 - [Connect Two Sparks playbook](https://build.nvidia.com/spark/connect-two-sparks)
-

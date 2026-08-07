@@ -2,8 +2,18 @@
 
 ## 4.1 安装 NVIDIA Sync
 
-- 在 [build.nvidia.com/spark/connect-to-your-spark](https://build.nvidia.com/spark/connect-to-your-spark)
-  下载 `nvidia-sync.dmg`（macOS），拖入 Applications。
+NVIDIA Sync 官方支持 **Windows / macOS / Ubuntu** 三种平台，任选其一即可（不需要 Mac）：
+
+- **Windows**：在 [build.nvidia.com/spark/connect-to-your-spark](https://build.nvidia.com/spark/connect-to-your-spark)
+  下载 Windows 安装器（`.exe`），双击安装。
+- **macOS**：下载 `nvidia-sync.dmg`，拖入 Applications。
+- **Ubuntu**：配置官方 apt 源后安装：
+  ```bash
+  curl -fsSL https://workbench.download.nvidia.com/stable/linux/gpgkey | sudo tee -a /etc/apt/trusted.gpg.d/ai-workbench-desktop-key.asc
+  echo "deb https://workbench.download.nvidia.com/stable/linux/debian default proprietary" | sudo tee -a /etc/apt/sources.list
+  sudo apt update && sudo apt install -y nvidia-sync
+  ```
+
 - 打开后添加两台设备（可用 IP 或设备名，见 Sync 向导）。
 
 ## 4.2 创建集群

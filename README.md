@@ -46,7 +46,7 @@
 ## 三、快速开始（TL;DR）
 
 前置条件：两台已联网、可 SSH 的 DGX Spark（系统 ≥ 2026-04 版本）、一根 QSFP112 DAC 线、
-一台装有 NVIDIA Sync 的 Mac。
+一台装有 NVIDIA Sync 的电脑（**Windows / macOS / Ubuntu 均可**，详见 04 章）。
 
 ```bash
 # 0. 替换 VARIABLES.md 中的全部 <占位符>

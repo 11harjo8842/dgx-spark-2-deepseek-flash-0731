@@ -3,15 +3,15 @@
 > 按执行顺序排列。**官方路径**均为本项目实际使用的来源；标注"国内镜像"的仅为受限网络加速，
 > 海外网络直接用官方源即可。所有校验方式都给出可执行命令。
 
-## 1. NVIDIA Sync（macOS）
+## 1. NVIDIA Sync（Windows / macOS / Ubuntu）
 
 | 项 | 值 |
 |---|---|
 | 官方路径 | [build.nvidia.com/spark/connect-to-your-spark](https://build.nvidia.com/spark/connect-to-your-spark) → 下载 `nvidia-sync.dmg` |
 | 文档 | [docs.nvidia.com/sync/latest/getting-started.html](https://docs.nvidia.com/sync/latest/getting-started.html) |
 | 大小 | 约 100–200 MB |
-| 下载到 | Mac，安装后拖入 Applications |
-| 校验 | 打开 App 正常进入引导；`xattr -d com.apple.quarantine /Applications/NVIDIA Sync.app`（如提示无法打开） |
+| 安装 | **Windows**：下载 `.exe` 安装器双击安装；**macOS**：下载 `.dmg` 拖入 Applications；**Ubuntu**：配置官方 apt 源后 `sudo apt install -y nvidia-sync`（命令见 04 章） |
+| 校验 | 打开应用正常进入引导即可；macOS 如提示无法打开：`xattr -d com.apple.quarantine /Applications/NVIDIA Sync.app` |
 
 ## 2. 系统 OTA 与固件（两台 Spark）
 

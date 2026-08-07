@@ -7,7 +7,7 @@
 | NVIDIA DGX Spark（GB10） | 2 | 128 GB 统一内存，Blackwell sm_121 |
 | QSFP112 DAC 直连铜缆（400GbE，仅以太网模式） | 1 | 支持型号：Amphenol `NJAAKK-N911`、Luxshare `LMTQF022-SD-R` |
 | 千兆交换机 / 家用路由器 | 1 | 管理网（有线或 Wi-Fi 均可） |
-| 装有 NVIDIA Sync 的 Mac / PC | 1 | 用于 Cluster Assistant 配置集群 |
+| 装有 NVIDIA Sync 的电脑（Windows / macOS / Ubuntu） | 1 | 用于 Cluster Assistant 配置集群 |
 
 > 官方要求：系统软件 ≥ **2026-04** 版本；线缆必须是官方列出的 QSFP112 DAC，
 > 用普通 100G/25G 线会协商不到 200G。

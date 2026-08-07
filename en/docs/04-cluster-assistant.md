@@ -2,7 +2,18 @@
 
 ## 4.1 Install NVIDIA Sync
 
-- Download `nvidia-sync.dmg` from [build.nvidia.com/spark/connect-to-your-spark](https://build.nvidia.com/spark/connect-to-your-spark) (macOS), drag into Applications.
+NVIDIA Sync officially supports **Windows / macOS / Ubuntu** — pick any one platform; a Mac is not required:
+
+- **Windows**: download the Windows installer (`.exe`) from
+  [build.nvidia.com/spark/connect-to-your-spark](https://build.nvidia.com/spark/connect-to-your-spark) and run it.
+- **macOS**: download `nvidia-sync.dmg` and drag it into Applications.
+- **Ubuntu**: configure the official apt repository, then install:
+  ```bash
+  curl -fsSL https://workbench.download.nvidia.com/stable/linux/gpgkey | sudo tee -a /etc/apt/trusted.gpg.d/ai-workbench-desktop-key.asc
+  echo "deb https://workbench.download.nvidia.com/stable/linux/debian default proprietary" | sudo tee -a /etc/apt/sources.list
+  sudo apt update && sudo apt install -y nvidia-sync
+  ```
+
 - Open the app and add both devices (by IP or device name, per the Sync wizard).
 
 ## 4.2 Create the Cluster
@@ -50,4 +61,3 @@ These are the **fabric IPs** (`<IP_FABRIC_A/B>`, `<IP_FABRIC_A2/B2>`) used by NC
 - [NVIDIA Sync download page](https://build.nvidia.com/spark/connect-to-your-spark)
 - [NVIDIA Sync Getting Started](https://docs.nvidia.com/sync/latest/getting-started.html)
 - [DGX Spark ConnectX-7 networking (User Guide)](https://docs.nvidia.com/dgx/dgx-spark/)
-

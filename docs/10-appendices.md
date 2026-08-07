@@ -34,7 +34,7 @@
 
 | 素材 | 类型 | 来源（网站/仓库） | 用途 | 相关章节 | 形态 |
 |---|---|---|---|---|---|
-| NVIDIA Sync (nvidia-sync.dmg) | 桌面软件 | build.nvidia.com/spark/connect-to-your-spark | 集群配置 | 04 | 引用 |
+| NVIDIA Sync（Windows / macOS / Ubuntu 桌面应用） | 桌面软件 | build.nvidia.com/spark/connect-to-your-spark | 集群配置 | 04 | 引用 |
 | NVIDIA Sync 文档 | 网站 | docs.nvidia.com/sync/latest/ | 安装/Cluster Assistant | 03, 04 | 引用 |
 | DGX Spark 用户指南 | 网站 | docs.nvidia.com/dgx/dgx-spark/ | 首次启动/OTA/网络 | 01, 02, 04 | 引用 |
 | NVIDIA/dgx-spark-playbooks | GitHub 仓库 | github.com/NVIDIA/dgx-spark-playbooks | NCCL/vLLM 官方 playbook | 05, 07 | 引用 |

@@ -35,7 +35,7 @@ versions and fetch commands — upstream code is not copied into the package (si
 
 | Material | Type | Source (site/repo) | Purpose | Chapters | Form |
 |---|---|---|---|---|---|
-| NVIDIA Sync (nvidia-sync.dmg) | desktop app | build.nvidia.com/spark/connect-to-your-spark | cluster config | 04 | reference |
+| NVIDIA Sync (Windows / macOS / Ubuntu desktop app) | desktop app | build.nvidia.com/spark/connect-to-your-spark | cluster config | 04 | reference |
 | NVIDIA Sync docs | website | docs.nvidia.com/sync/latest/ | install / Cluster Assistant | 03, 04 | reference |
 | DGX Spark User Guide | website | docs.nvidia.com/dgx/dgx-spark/ | first boot / OTA / networking | 01, 02, 04 | reference |
 | NVIDIA/dgx-spark-playbooks | GitHub repo | github.com/NVIDIA/dgx-spark-playbooks | official NCCL/vLLM playbooks | 05, 07 | reference |
@@ -91,4 +91,3 @@ All `<PLACEHOLDER>` definitions live in [VARIABLES.md](../VARIABLES.md). After r
 ```bash
 rg -n "<[A-Z_]+>" .          # confirm nothing is left unreplaced
 ```
-

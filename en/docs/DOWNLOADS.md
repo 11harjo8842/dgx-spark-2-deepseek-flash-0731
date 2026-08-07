@@ -4,15 +4,15 @@
 > "mirror" are only for restricted-network acceleration — use the official source on open networks.
 > Every item includes a runnable verification command.
 
-## 1. NVIDIA Sync (macOS)
+## 1. NVIDIA Sync (Windows / macOS / Ubuntu)
 
 | Item | Value |
 |---|---|
 | Official source | [build.nvidia.com/spark/connect-to-your-spark](https://build.nvidia.com/spark/connect-to-your-spark) → download `nvidia-sync.dmg` |
 | Docs | [docs.nvidia.com/sync/latest/getting-started.html](https://docs.nvidia.com/sync/latest/getting-started.html) |
 | Size | ~100–200 MB |
-| Destination | Mac; drag into Applications |
-| Verify | App launches and onboarding works; `xattr -d com.apple.quarantine "/Applications/NVIDIA Sync.app"` if macOS blocks it |
+| Install | **Windows**: run the downloaded `.exe` installer; **macOS**: drag the `.dmg` into Applications; **Ubuntu**: configure the official apt repo then `sudo apt install -y nvidia-sync` (commands in chapter 04) |
+| Verify | App launches and onboarding works; on macOS, `xattr -d com.apple.quarantine "/Applications/NVIDIA Sync.app"` if macOS blocks it |
 
 ## 2. System OTA and Firmware (both Sparks)
 

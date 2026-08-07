@@ -48,7 +48,7 @@
 ## 3. Quick Start (TL;DR)
 
 Prerequisites: two networked DGX Spark units (system ≥ 2026-04), one QSFP112 DAC cable,
-a Mac with NVIDIA Sync installed.
+a computer with NVIDIA Sync installed (**Windows, macOS, or Ubuntu — any of them works**, see chapter 04).
 
 ```bash
 # 0. Replace every <PLACEHOLDER> in VARIABLES.md
@@ -106,4 +106,3 @@ Key official references:
 - The model and images come from official/public sources; verify image digests before use (chapter 06).
 - If you are not on a restricted (China) network, replace the mirror sources with the official ones
   (alternatives are noted in each chapter).
-
