@@ -11,7 +11,7 @@
 
 ## 效果预览（最终部署运行实况）
 
-> 部署完成后，配合自研监控面板（独立仓库 `dgx-spark-2-deepseek-flash-dashboard`）可实时查看运行实况。
+> 部署完成后，配合自研监控面板（独立仓库 [`dgx-spark-2-deepseek-flash-dashboard`](https://github.com/maliubiao/dgx-spark-2-deepseek-flash-dashboard)）可实时查看运行实况。
 > 下图为面板在真实环境中的截图：单会话 **60–70 tok/s**、GPU 约 **70°C**、连续长跑不崩溃；
 > 完整图文实录见 [08 章 §8.6](docs/08-verify.md)。
 

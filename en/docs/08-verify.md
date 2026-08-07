@@ -88,7 +88,7 @@ experience** — not at “it boots” demo level, but solid enough to serve as 
 > in the initial deployment — day-to-day use is zero-maintenance.
 
 The companion monitoring dashboard (the same vibe-coding output, standalone repo
-`dgx-spark-2-deepseek-flash-dashboard`) shows GPU util/temp/power, decode throughput, speculative-
+[`dgx-spark-2-deepseek-flash-dashboard`](https://github.com/maliubiao/dgx-spark-2-deepseek-flash-dashboard)) shows GPU util/temp/power, decode throughput, speculative-
 decoding acceptance, KV cache and prefix hit rate in real time. The three screenshots below are live:
 
 ![Panel screenshot 1 — real-time overview](../docs/perf/vibe-panel-1.png)

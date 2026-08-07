@@ -81,7 +81,7 @@ KV 池是共享的：总在线 token ≤ ~1.83M，长上下文与高并发互斥
 > 审美结论没有歧义：**两台 DGX Spark 刚好能拿捏 deepseek v4 flash 0731**，
 > 单流 60–70 tok/s 的体验足以覆盖日常 vibe coding；花的力气主要在首次部署上，日常使用零维护。
 
-配套的监控面板（同一套 vibe coding 产物，独立仓库 `dgx-spark-2-deepseek-flash-dashboard`）
+配套的监控面板（同一套 vibe coding 产物，独立仓库 [`dgx-spark-2-deepseek-flash-dashboard`](https://github.com/maliubiao/dgx-spark-2-deepseek-flash-dashboard)）
 实时展示 GPU 利用率/温度/功耗、decode 吞吐、投机解码接受率、KV cache 与 prefix 命中率，
 方便随时确认“机器是否在稳定工作”。下面三张为面板实时截图：
 
