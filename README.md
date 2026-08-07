@@ -27,6 +27,8 @@
 - KV cache：`nvfp4_ds_mla`，双机约 **183 万 token** 共享池，`max_model_len=1048576`
 - 实测性能（社区 + 本方案）：单流约 **60–96 tok/s**，热机 decode ~78–80 tok/s，DSpark 接受率 ~91%，
   高并发聚合最高约 340 tok/s（社区数据，需配合 `DEFAULT_THINKING=low/off` 压测）
+- 长跑体验（本方案实测）：Agent/Vibe Coding 连续多轮长跑 **稳定不崩溃**，单会话 **60–70 tok/s**，
+  跑 Agent 期间 GPU 约 **70°C**，体验结论为“完全能用、使用体验不错”——图文实录见 [08 章 §8.6](docs/08-verify.md)
 
 ## 二、章节导航
 
