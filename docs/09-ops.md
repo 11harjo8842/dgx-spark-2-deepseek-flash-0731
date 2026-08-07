@@ -37,7 +37,7 @@ sudo sysctl -w vm.compaction_proactiveness=0
 
 | 现象 | 原因 | 处理 |
 |---|---|---|
-| 集群测速 25G | 网络计划未生效 | 重启两台后 Run Test Again |
+| 集群测速 25G | 网络计划未生效 | 直接重启两台（线保持插着）后 Run Test Again；重启才是关键，反复插拔线缆无效 |
 | `nvidia-smi` failed | 升级后未重启 | 重启 |
 | NCCL `ibv_modify_qp` / GID 错误 | RoCEv2 GID 索引漂移 | 保持 `NCCL_IB_GID_AUTO=1`；或按 05 章逐台查 GID 表 |
 | mpirun 卡住 | SSH 免密/主机密钥问题 | 先最小 `mpirun hostname` 验证 |
@@ -55,4 +55,3 @@ sudo sysctl -w vm.compaction_proactiveness=0
 - 换模型版本：重下模型缓存 → 更新 `DSPARK_MODEL` 与 `DSPARK_ENCODING_FILE` → 重启。
 - 回滚网络：删除集群会清掉双机 SSH 与网络计划（Sync → Settings → Clusters → Delete），
   网络计划文件：`/etc/netplan/99-nvidia-sync-cluster.yaml`。
-

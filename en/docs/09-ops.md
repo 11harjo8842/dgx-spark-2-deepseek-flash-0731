@@ -39,7 +39,7 @@ GB10 — not a fault.
 
 | Symptom | Cause | Fix |
 |---|---|---|
-| Cluster speed test 25G | network plan not active | reboot both nodes, Run Test Again |
+| Cluster speed test 25G | network plan not active | reboot both nodes (cable stays plugged in), then Run Test Again — the reboot is what activates the config; replugging the cable alone does not help |
 | `nvidia-smi` fails | reboot pending after upgrade | reboot |
 | NCCL `ibv_modify_qp` / GID error | RoCEv2 GID index drift | keep `NCCL_IB_GID_AUTO=1`; or inspect the GID table per chapter 05 |
 | mpirun hangs | SSH/host-key issue | validate with a minimal `mpirun hostname` first |
@@ -59,4 +59,3 @@ GB10 — not a fault.
 - Roll back networking: deleting the cluster clears node-to-node SSH and the network plan
   (Sync → Settings → Clusters → Delete); netplan file:
   `/etc/netplan/99-nvidia-sync-cluster.yaml`.
-

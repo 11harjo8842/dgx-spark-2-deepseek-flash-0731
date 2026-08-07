@@ -47,13 +47,15 @@ These are the **fabric IPs** (`<IP_FABRIC_A/B>`, `<IP_FABRIC_A2/B2>`) used by NC
 
 | Symptom | Cause / fix |
 |---|---|
-| Speed test shows only 25G | network plan just written but not active: **reboot both (cable plugged in) then Run Test Again**; if still low, check the cable model |
+| Speed test shows only 25G | network plan just written but not active: **reboot both (cable plugged in) then Run Test Again**. The reboot is what activates the config; repeatedly unplugging/replugging the cable alone does nothing. If still low after a reboot, check the cable model |
 | Device check fails | system not upgraded to 2026-04+; sudo needs password or NOPASSWD |
 | SSH check fails | Sync machine must be on the same LAN and able to SSH to the devices |
 | 200G reported but slow test | confirm a single supported QSFP112 DAC; reboot and retest |
 
-> In this setup, 25G was caused by the config not yet being applied; after a reboot the test passed,
-> and iperf3 measured ~107 Gbit/s per link (≈214 Gbit/s combined).
+> In this setup, the first speed test showed only 25G. Repeatedly unplugging and replugging the
+> cable did not help; **rebooting both nodes** restored the link to 200G+ immediately (iperf3
+> later measured ~107 Gbit/s per link, ≈214 Gbit/s combined). So if you see 25G, do not fiddle
+> with the cable first — just reboot (cable stays plugged in) and Run Test Again.
 
 ## Official References
 
