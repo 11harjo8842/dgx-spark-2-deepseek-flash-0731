@@ -83,6 +83,12 @@ versions and fetch commands — upstream code is not copied into the package (si
 | `scripts/resume-downloads.sh` | boot-time auto-resume |
 | `scripts/repro-preflight.sh` | environment preflight |
 | `scripts/.env.dspark.example` | two-node vLLM config template (masked) |
+| `scripts/dspark-vllm-start.sh` | head auto-start wrapper (masked; install to `/usr/local/sbin/` after replacing placeholders) |
+| `scripts/dspark-vllm-stop.sh` | head stop wrapper (masked) |
+| `scripts/dspark-vllm-ensure.sh` | worker container ensure (masked) |
+| `scripts/dspark-vllm.service` | head systemd unit (boot auto-start + failure retry) |
+| `scripts/dspark-vllm-worker.service` | worker systemd unit (boot auto-start) |
+| `scripts/install-autostart.sh` | one-shot auto-start installer (run on head; installs to both nodes) |
 
 ## 10.5 Placeholder Quick Reference
 

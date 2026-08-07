@@ -90,7 +90,13 @@ dgx-spark-2-deepseek-flash-0731/
     ├── dsv4-chunkdl.py          # Chunked downloader (sha256 + resume)
     ├── resume-downloads.sh      # Boot-time auto-resume
     ├── repro-preflight.sh       # Environment preflight check
-    └── .env.dspark.example      # Two-node vLLM config template (masked)
+    ├── .env.dspark.example      # Two-node vLLM config template (masked)
+    ├── dspark-vllm-start.sh     # systemd start wrapper (head, masked template)
+    ├── dspark-vllm-stop.sh      # systemd stop wrapper (head, masked template)
+    ├── dspark-vllm-ensure.sh    # worker container ensure script (masked template)
+    ├── dspark-vllm.service      # head systemd unit
+    ├── dspark-vllm-worker.service  # worker systemd unit
+    └── install-autostart.sh     # one-shot auto-start installer
 ```
 
 > The `scripts/` directory is shared by both language versions. English chapters reference

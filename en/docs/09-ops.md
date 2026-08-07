@@ -23,6 +23,42 @@ After a reboot it automatically resumes incomplete model downloads and re-pulls 
 All long tasks should run with `nohup setsid ... < /dev/null &` so they detach from SSH
 (PPID=1 and TTY=? confirm success).
 
+## 9.2b Inference Service Auto-Start (systemd, recommended)
+
+Starting the service only via `./start-deepseek-v4-flash-dspark.sh` means it will **not come back
+after a machine reboot**. This setup installs one systemd unit per node for boot auto-start plus
+crash self-healing (masked templates are in this package's `scripts/`):
+
+| Node | Unit | Behavior |
+|---|---|---|
+| head | `dspark-vllm.service` | On boot runs the start wrapper: API healthy → skip; worker up but head missing → `docker compose up` the head and wait; neither up → run `./start-...`. `Restart=on-failure` (60s interval, max 5 in 600s) |
+| worker | `dspark-vllm-worker.service` | On boot ensures the worker container is running (idempotent) |
+| both | container `deepseek-v4-flash-vllm-dspark-1` | `restart: unless-stopped` (already in the compose file, see chapter 07) |
+
+Install (run `scripts/install-autostart.sh` on the head; first replace the
+`<USER>`, `<IP_MGMT_B>`, `<REPO_PATH>` placeholders in the scripts):
+
+```bash
+bash install-autostart.sh
+# verify (both must print enabled)
+systemctl is-enabled dspark-vllm.service        # head
+systemctl is-enabled dspark-vllm-worker.service # worker
+```
+
+Daily start/stop/restart (equivalent to the manual scripts; the head unit also
+orchestrates the worker):
+
+```bash
+sudo systemctl start dspark-vllm.service     # idempotent; waits for the API on cold start (up to ~20 min)
+sudo systemctl stop dspark-vllm.service      # stops containers on both nodes
+sudo systemctl restart dspark-vllm.service
+sudo systemctl status dspark-vllm.service
+sudo journalctl -u dspark-vllm.service -f
+```
+
+> `systemctl stop` runs the ExecStop wrapper (stops head + worker together); to fully
+> disable auto-start: `sudo systemctl disable dspark-vllm.service` (same on the worker).
+
 ## 9.3 Kernel and Memory Hardening
 
 ```bash

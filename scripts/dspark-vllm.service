@@ -1,0 +1,22 @@
+[Unit]
+Description=DeepSeek-V4-Flash-0731 DSpark vLLM (dual-node, head orchestrates worker)
+Documentation=https://github.com/MiaAI-Lab/DeepSeek-v4-Flash-DSpark-2x-DGX-Spark
+After=network-online.target docker.service
+Wants=network-online.target
+Requires=docker.service
+StartLimitIntervalSec=600
+StartLimitBurst=5
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/local/sbin/dspark-vllm-start.sh
+ExecStop=/usr/local/sbin/dspark-vllm-stop.sh
+Restart=on-failure
+RestartSec=60
+TimeoutStartSec=1800
+TimeoutStopSec=600
+KillMode=process
+
+[Install]
+WantedBy=multi-user.target

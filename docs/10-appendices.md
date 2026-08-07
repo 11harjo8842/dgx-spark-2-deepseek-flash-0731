@@ -80,6 +80,12 @@
 | `scripts/resume-downloads.sh` | 开机自恢复 |
 | `scripts/repro-preflight.sh` | 双机环境自检 |
 | `scripts/.env.dspark.example` | vLLM 双机配置模板（脱敏） |
+| `scripts/dspark-vllm-start.sh` | head 自启包装脚本（脱敏模板，替换占位符后安装到 `/usr/local/sbin/`） |
+| `scripts/dspark-vllm-stop.sh` | head 停止包装脚本（脱敏模板） |
+| `scripts/dspark-vllm-ensure.sh` | worker 容器守护脚本（脱敏模板） |
+| `scripts/dspark-vllm.service` | head systemd 单元（开机自启 + 失败重试） |
+| `scripts/dspark-vllm-worker.service` | worker systemd 单元（开机自启） |
+| `scripts/install-autostart.sh` | 一键安装自启（head 上执行，自动装到双机） |
 
 ## 10.5 变量引用速查
 

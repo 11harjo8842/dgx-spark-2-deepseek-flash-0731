@@ -92,7 +92,13 @@ dgx-spark-2-deepseek-flash-0731/
     ├── dsv4-chunkdl.py          # 自研分块下载器（断点续传 + sha256 校验）
     ├── resume-downloads.sh      # 开机自恢复（下载/镜像）
     ├── repro-preflight.sh       # 复现前环境自检
-    └── .env.dspark.example      # vLLM 双机配置模板（脱敏）
+    ├── .env.dspark.example      # vLLM 双机配置模板（脱敏）
+    ├── dspark-vllm-start.sh     # systemd 自启包装脚本（head，脱敏模板）
+    ├── dspark-vllm-stop.sh      # systemd 停止包装脚本（head，脱敏模板）
+    ├── dspark-vllm-ensure.sh    # worker 容器守护脚本（脱敏模板）
+    ├── dspark-vllm.service      # head systemd 单元
+    ├── dspark-vllm-worker.service  # worker systemd 单元
+    └── install-autostart.sh     # 一键安装双机自启
 ```
 
 ## 五、官方文档路径与下载物

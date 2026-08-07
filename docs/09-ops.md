@@ -22,6 +22,41 @@ chmod +x ~/resume-downloads.sh
 重启后自动：续传未完成的模型下载、补拉缺失的镜像。所有长任务都应
 `nohup setsid ... < /dev/null &` 脱离 SSH 会话（PPID=1、TTY=? 即成功）。
 
+## 9.2b 推理服务开机自启（systemd，推荐）
+
+仅靠 `./start-deepseek-v4-flash-dspark.sh` 手动启动时，**机器重启后服务不会自动恢复**。
+本方案在 head/worker 各装一个 systemd 单元实现开机自启 + 崩溃自愈（复现包
+`scripts/` 提供脱敏模板）：
+
+| 节点 | 单元 | 行为 |
+|---|---|---|
+| head | `dspark-vllm.service` | 开机执行 start 包装脚本：API 已健康→跳过；worker 容器在而 head 缺失→compose 拉起 head 并等待；双缺→执行 `./start-...`。`Restart=on-failure`（60s 间隔，600s 内最多 5 次） |
+| worker | `dspark-vllm-worker.service` | 开机确保 worker 容器在（幂等） |
+| 双机 | 容器 `deepseek-v4-flash-vllm-dspark-1` | `restart: unless-stopped`（compose 已配置，见 07 章） |
+
+安装（在 head 上执行 `scripts/install-autostart.sh`，需先替换脚本里的
+`<USER>`、`<IP_MGMT_B>`、`<REPO_PATH>` 占位符）：
+
+```bash
+bash install-autostart.sh
+# 验证（两台都应输出 enabled）
+systemctl is-enabled dspark-vllm.service        # head
+systemctl is-enabled dspark-vllm-worker.service # worker
+```
+
+日常启动/停止/重启（与手动脚本等价，且 head 会连带编排 worker）：
+
+```bash
+sudo systemctl start dspark-vllm.service     # 幂等；冷启动会等待 API 就绪（最长约 20 分钟）
+sudo systemctl stop dspark-vllm.service      # 停双机容器
+sudo systemctl restart dspark-vllm.service
+sudo systemctl status dspark-vllm.service
+sudo journalctl -u dspark-vllm.service -f
+```
+
+> `systemctl stop` 会通过 ExecStop 调用 stop 脚本（head+worker 一起停）；
+> 若想彻底停用自启：`sudo systemctl disable dspark-vllm.service`（worker 同理）。
+
 ## 9.3 内核与内存加固
 
 ```bash
