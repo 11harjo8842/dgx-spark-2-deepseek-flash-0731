@@ -7,8 +7,11 @@
 3. 确认系统版本满足要求：
 
 ```bash
-cat /etc/nv_tegra_release 2>/dev/null; cat /etc/os-release | head -2
+cat /etc/dgx-release 2>/dev/null; cat /etc/os-release | head -2
 ```
+
+> DGX Spark 用 `/etc/dgx-release`（含 `DGX_OTA_VERSION`，如 7.5.0）确认系统/OTA 版本；
+> 没有 Jetson 的 `/etc/nv_tegra_release`。
 
 ## 2.2 系统软件 OTA 升级
 
@@ -52,7 +55,7 @@ sudo /usr/sbin/nvidia-spark-run-apt-upgrade-once.sh
 ```bash
 sudo nvidia-spark-ota-check            # 期望 torn-score: 0
 nvidia-smi                             # 期望 NVIDIA GB10, 驱动 580.x
-nvcc --version                         # 期望 CUDA 13.0
+/usr/local/cuda-13.0/bin/nvcc --version   # 期望 CUDA 13.0（nvcc 默认不在 PATH）
 nproc                                  # 20
 free -g | head -2                      # 期望 ~121 Gi
 df -h /home | tail -1                  # 模型需要 ≥ 400 GB 空闲
@@ -63,8 +66,9 @@ df -h /home | tail -1                  # 模型需要 ≥ 400 GB 空闲
 ```bash
 sudo fwupdmgr refresh
 sudo fwupdmgr update -y                # 会刷固件并重启
-# 重启后验证
-sudo dmidecode -t 11 | grep -i usbpd   # 期望 USBPD 固件为最新（如 5.22）
+# 重启后验证（本系统无 USBPD 设备；重点看 ConnectX-7 与 UEFI 固件）
+fwupdmgr get-devices | grep -A2 "MT2910"   # ConnectX-7 固件（如 28.45.4028）
+sudo nvidia-spark-ota-check summary        # torn-score: 0
 ```
 
 ## 2.4 Docker 与用户组

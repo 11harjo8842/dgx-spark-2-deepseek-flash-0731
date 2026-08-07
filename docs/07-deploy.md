@@ -35,7 +35,7 @@ docker image inspect ghcr.io/anemll/dspark-vllm-gx10:0.1.1 --format '{{range .Re
 git clone https://github.com/MiaAI-Lab/DeepSeek-v4-Flash-DSpark-2x-DGX-Spark.git \
   ~/DeepSeek-v4-Flash-DSpark-2x-DGX-Spark
 cd ~/DeepSeek-v4-Flash-DSpark-2x-DGX-Spark
-cp .env.dspark.example .env.dspark   # 用 scripts/.env.dspark.example 模板替换占位符
+cp .env.dspark.example .env.dspark   # 模板在本仓库根目录；替换为 VARIABLES.md 中的 <占位符>
 ```
 
 配置要点（详见 [VARIABLES.md](../VARIABLES.md)）：
@@ -51,9 +51,13 @@ cp .env.dspark.example .env.dspark   # 用 scripts/.env.dspark.example 模板替
 
 ## 7.3 启动前自检
 
+复现包自带 `scripts/repro-preflight.sh`（本仓库，不在部署仓库里）。把它拷到 head 后执行：
+
 ```bash
-bash scripts/repro-preflight.sh <IP_MGMT_B>   # 双机 SSH/GPU/镜像/模型/RoCE/端口
+bash repro-preflight.sh <IP_MGMT_B>   # 双机 SSH/GPU/CUDA/镜像/模型/RoCE/端口
 ```
+
+> 检查项全部 `[OK]` 且 `8888 空闲` 才满足部署前置条件；若某项 `[FAIL]` 按提示先修复。
 
 ## 7.4 启动服务（head 上执行，worker 先起）
 
@@ -88,4 +92,3 @@ sudo sysctl -w vm.compaction_proactiveness=0
 # 若系统装了 earlyoom，建议禁用（防止误杀 vLLM 进程）
 sudo systemctl disable --now earlyoom 2>/dev/null || true
 ```
-

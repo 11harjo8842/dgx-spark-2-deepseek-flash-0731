@@ -8,8 +8,11 @@
 3. Confirm the system version:
 
 ```bash
-cat /etc/nv_tegra_release 2>/dev/null; cat /etc/os-release | head -2
+cat /etc/dgx-release 2>/dev/null; cat /etc/os-release | head -2
 ```
+
+> DGX Spark uses `/etc/dgx-release` (contains `DGX_OTA_VERSION`, e.g. 7.5.0) for the system/OTA
+> version; there is no Jetson-style `/etc/nv_tegra_release`.
 
 ## 2.2 System Software OTA Upgrade
 
@@ -55,7 +58,7 @@ Verify:
 ```bash
 sudo nvidia-spark-ota-check            # expect torn-score: 0
 nvidia-smi                             # expect NVIDIA GB10, driver 580.x
-nvcc --version                         # expect CUDA 13.0
+/usr/local/cuda-13.0/bin/nvcc --version   # expect CUDA 13.0 (nvcc not on default PATH)
 nproc                                  # 20
 free -g | head -2                      # expect ~121 Gi
 df -h /home | tail -1                  # need ≥ 400 GB free for the model
@@ -66,8 +69,9 @@ df -h /home | tail -1                  # need ≥ 400 GB free for the model
 ```bash
 sudo fwupdmgr refresh
 sudo fwupdmgr update -y                # flashes firmware and reboots
-# after reboot
-sudo dmidecode -t 11 | grep -i usbpd   # expect latest USBPD firmware (e.g. 5.22)
+# after reboot (no USBPD device on this system; check ConnectX-7 and UEFI instead)
+fwupdmgr get-devices | grep -A2 "MT2910"   # ConnectX-7 firmware (e.g. 28.45.4028)
+sudo nvidia-spark-ota-check summary        # torn-score: 0
 ```
 
 ## 2.4 Docker and User Group

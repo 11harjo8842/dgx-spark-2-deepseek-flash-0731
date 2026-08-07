@@ -32,7 +32,7 @@ docker image inspect ghcr.io/anemll/dspark-vllm-gx10:0.1.1 --format '{{range .Re
 git clone https://github.com/MiaAI-Lab/DeepSeek-v4-Flash-DSpark-2x-DGX-Spark.git \
   ~/DeepSeek-v4-Flash-DSpark-2x-DGX-Spark
 cd ~/DeepSeek-v4-Flash-DSpark-2x-DGX-Spark
-cp .env.dspark.example .env.dspark   # use ../scripts/.env.dspark.example and replace placeholders
+cp .env.dspark.example .env.dspark   # template lives in this repo's root; replace <placeholders>
 ```
 
 Config essentials (see [VARIABLES.md](../VARIABLES.md)):
@@ -48,9 +48,14 @@ Config essentials (see [VARIABLES.md](../VARIABLES.md)):
 
 ## 7.3 Preflight
 
+The reproduction package ships `scripts/repro-preflight.sh` (this repo, not the deployment repo).
+Copy it to the head and run:
+
 ```bash
-bash ../scripts/repro-preflight.sh <IP_MGMT_B>   # SSH/GPU/image/model/RoCE/port on both nodes
+bash repro-preflight.sh <IP_MGMT_B>   # SSH/GPU/CUDA/image/model/RoCE/port on both nodes
 ```
+
+> Every check must be `[OK]` and `8888 idle` before deployment; fix any `[FAIL]` first.
 
 ## 7.4 Launch (on head; worker starts first)
 
@@ -85,4 +90,3 @@ sudo sysctl -w vm.compaction_proactiveness=0
 # disable earlyoom if installed (it may OOM-kill vLLM)
 sudo systemctl disable --now earlyoom 2>/dev/null || true
 ```
-
