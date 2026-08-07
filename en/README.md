@@ -75,12 +75,17 @@ a computer with NVIDIA Sync installed (**Windows, macOS, or Ubuntu — any of th
 
 ## 4. Package Layout
 
+> The clone directory name equals the repo name (`dgx-spark-2-deepseek-flash-0731`).
+> Current tree:
+
 ```text
-dgx-spark-deepseek-v4-flash-repro/
-├── README.md                    # Chinese overview
-├── en/                          # English version (this tree)
+dgx-spark-2-deepseek-flash-0731/
+├── README.md                    # Chinese overview (incl. effect preview screenshots)
+├── LICENSE                      # MIT
 ├── VARIABLES.md                 # Placeholder reference (Chinese)
-├── docs/                        # Chinese chapters 01–10
+├── .gitignore                   # .DS_Store / *.log
+├── en/                          # English version (this tree)
+├── docs/                        # Chinese chapters 01–10 + DOWNLOADS + perf/ images
 └── scripts/
     ├── dsv4-chunkdl.py          # Chunked downloader (sha256 + resume)
     ├── resume-downloads.sh      # Boot-time auto-resume

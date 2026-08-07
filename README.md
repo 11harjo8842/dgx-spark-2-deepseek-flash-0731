@@ -74,14 +74,20 @@
 
 ## 四、目录结构
 
+> 克隆后目录名 = 仓库名 `dgx-spark-2-deepseek-flash-0731`（git clone 会按仓库名建目录）。
+> 当前实际树：
+
 ```text
-dgx-spark-deepseek-v4-flash-repro/
-├── README.md                    # 本文件
-├── en/                          # 英文版整套文档（English version）
+dgx-spark-2-deepseek-flash-0731/
+├── README.md                    # 本文件（含最终效果预览：监控面板截图）
+├── LICENSE                      # MIT 许可
 ├── VARIABLES.md                 # 全部脱敏占位符对照表（先替换）
+├── .gitignore                   # 忽略 .DS_Store / *.log
+├── en/                          # 英文版整套文档（README + VARIABLES + docs/）
 ├── docs/
 │   ├── DOWNLOADS.md             # ★ 下载清单：要下载什么、官方路径、大小、校验
 │   ├── 01-hardware.md … 10-appendices.md   # 分章节教程
+│   └── perf/                    # 效果实录配图（监控面板实时截图）
 └── scripts/
     ├── dsv4-chunkdl.py          # 自研分块下载器（断点续传 + sha256 校验）
     ├── resume-downloads.sh      # 开机自恢复（下载/镜像）
