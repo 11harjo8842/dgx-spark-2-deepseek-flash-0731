@@ -13,15 +13,27 @@ cat /etc/nv_tegra_release 2>/dev/null; cat /etc/os-release | head -2
 
 ## 2.2 System Software OTA Upgrade
 
-The system must be ≥ 2026-04 to use Cluster Assistant. Recommended:
+The system must be ≥ 2026-04 to use Cluster Assistant. The OTA tool ships with the system:
+`nvidia-spark-ota-check` (note: **there is no `nv-ota` command**). Recommended flow:
 
-- GUI: DGX Dashboard → system update;
-- CLI (headless environment):
+- **GUI (recommended)**: DGX Dashboard → system update; the Dashboard handles the OTA automatically;
+- **CLI (headless environment)**:
 
 ```bash
-sudo nvidia-spark-ota-check
-sudo nv-ota 2>/dev/null || sudo apt-get update && sudo apt-get upgrade -y
+# 1) Check current OTA state (torn-score: 0 = fully applied)
+sudo nvidia-spark-ota-check summary
+sudo nvidia-spark-ota-check torn-score
+
+# 2) Is an update available? (returns JSON)
+sudo nvidia-spark-ota-check is-ota-available
+
+# 3) Apply the update: the official one-shot upgrade script (reboot afterwards)
+sudo /usr/sbin/nvidia-spark-run-apt-upgrade-once.sh
 ```
+
+> Example output: `summary` returns `"detected_ota": "OTA2607", "torn": 0.0` (all 153 checks pass).
+> Per-release contents are listed in the official release notes:
+> <https://docs.nvidia.com/dgx/dgx-spark/release-notes.html>
 
 > **Reboot afterwards.** A known symptom: after upgrading, `nvidia-smi` reports failure because
 > the driver modules were built for the new kernel; a reboot resolves it.
@@ -59,5 +71,5 @@ sudo usermod -aG docker $USER          # run docker without sudo; takes effect o
 
 - [DGX Spark First Boot](https://docs.nvidia.com/dgx/dgx-spark/first-boot.html)
 - [DGX Spark User Guide (software updates)](https://docs.nvidia.com/dgx/dgx-spark/)
+- [DGX Spark Release Notes (OTA contents)](https://docs.nvidia.com/dgx/dgx-spark/release-notes.html)
 - [Cluster Assistant (system version ≥ 2026-04)](https://docs.nvidia.com/sync/latest/cluster-assistant.html)
-
