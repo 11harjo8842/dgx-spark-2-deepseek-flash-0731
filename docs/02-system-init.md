@@ -30,6 +30,16 @@ sudo nvidia-spark-ota-check is-ota-available
 sudo /usr/sbin/nvidia-spark-run-apt-upgrade-once.sh
 ```
 
+> **命令来源**：`nvidia-spark-ota-check` 是系统出厂自带的 OTA 诊断/状态工具，由
+> `nvidia-spark-ota-check` 软件包提供（本机路径 `/usr/bin/nvidia-spark-ota-check`，
+> 代码在 `/opt/nvidia/spark-ota-check/`），并非用户安装的第三方命令。
+> NVIDIA 官方文档（OS and Component Update Guide）主推 DGX Dashboard 更新；
+> 手动更新方式是 `sudo apt update && sudo apt dist-upgrade` +
+> `sudo fwupdmgr refresh && sudo fwupdmgr upgrade`，该页面并未列出
+> `nvidia-spark-ota-check`。此工具主要见于 NVIDIA 开发者论坛，用于查看 OTA 状态
+> （torn-score 是否为 0）。若系统里没有该命令，直接用上述官方手动方式更新即可，
+> 或先 `apt-cache policy nvidia-spark-ota-check` 确认包是否已安装。
+
 > 示例输出：`summary` 返回 `"detected_ota": "OTA2607", "torn": 0.0`（153 项检查全部通过）。
 > 各版本更新内容与发布说明见官方 release notes：
 > <https://docs.nvidia.com/dgx/dgx-spark/release-notes.html>
@@ -70,5 +80,6 @@ sudo usermod -aG docker $USER          # 免 sudo 用 docker；新 SSH 会话生
 
 - [DGX Spark 首次启动](https://docs.nvidia.com/dgx/dgx-spark/first-boot.html)
 - [DGX Spark 用户指南（软件更新）](https://docs.nvidia.com/dgx/dgx-spark/)
+- [DGX Spark：OS and Component Update Guide](https://docs.nvidia.com/dgx/dgx-spark/os-and-component-update.html)
 - [DGX Spark Release Notes（OTA 内容）](https://docs.nvidia.com/dgx/dgx-spark/release-notes.html)
 - [Cluster Assistant（系统版本要求 ≥ 2026-04）](https://docs.nvidia.com/sync/latest/cluster-assistant.html)

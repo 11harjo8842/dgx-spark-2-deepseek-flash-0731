@@ -31,6 +31,18 @@ sudo nvidia-spark-ota-check is-ota-available
 sudo /usr/sbin/nvidia-spark-run-apt-upgrade-once.sh
 ```
 
+> **Where this command comes from**: `nvidia-spark-ota-check` is an OTA diagnostics/status
+> tool that ships with the system, provided by the `nvidia-spark-ota-check` package
+> (`/usr/bin/nvidia-spark-ota-check`; sources under `/opt/nvidia/spark-ota-check/`). It is not a
+> third-party tool you install yourself. NVIDIA's official OS and Component Update Guide
+> recommends the DGX Dashboard for updates; the manual path is
+> `sudo apt update && sudo apt dist-upgrade` plus
+> `sudo fwupdmgr refresh && sudo fwupdmgr upgrade`, and that page does not mention
+> `nvidia-spark-ota-check`. The tool is mainly referenced on the NVIDIA developer forums for
+> checking OTA state (torn-score == 0). If the command is missing on your system, just follow
+> the official manual update commands above, or check `apt-cache policy nvidia-spark-ota-check`
+> to confirm the package is installed.
+
 > Example output: `summary` returns `"detected_ota": "OTA2607", "torn": 0.0` (all 153 checks pass).
 > Per-release contents are listed in the official release notes:
 > <https://docs.nvidia.com/dgx/dgx-spark/release-notes.html>
@@ -71,5 +83,6 @@ sudo usermod -aG docker $USER          # run docker without sudo; takes effect o
 
 - [DGX Spark First Boot](https://docs.nvidia.com/dgx/dgx-spark/first-boot.html)
 - [DGX Spark User Guide (software updates)](https://docs.nvidia.com/dgx/dgx-spark/)
+- [DGX Spark: OS and Component Update Guide](https://docs.nvidia.com/dgx/dgx-spark/os-and-component-update.html)
 - [DGX Spark Release Notes (OTA contents)](https://docs.nvidia.com/dgx/dgx-spark/release-notes.html)
 - [Cluster Assistant (system version ≥ 2026-04)](https://docs.nvidia.com/sync/latest/cluster-assistant.html)
