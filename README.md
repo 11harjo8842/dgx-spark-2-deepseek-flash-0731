@@ -9,6 +9,18 @@
 > **敏感信息已全部脱敏**：所有 IP、主机名、Wi-Fi/代理账号密码、SSH 密钥均以 `<占位符>` 表示，
 > 见 [VARIABLES.md](VARIABLES.md)。
 
+## 效果预览（最终部署运行实况）
+
+> 部署完成后，配合自研监控面板（独立仓库 `dgx-spark-2-deepseek-flash-dashboard`）可实时查看运行实况。
+> 下图为面板在真实环境中的截图：单会话 **60–70 tok/s**、GPU 约 **70°C**、连续长跑不崩溃；
+> 完整图文实录见 [08 章 §8.6](docs/08-verify.md)。
+
+![面板预览 1 —— 实时总览](docs/perf/vibe-panel-1.png)
+
+![面板预览 2 —— GPU/主机与吞吐](docs/perf/vibe-panel-2.png)
+
+![面板预览 3 —— 性能详情](docs/perf/vibe-panel-3.png)
+
 ## 一、架构与结果
 
 ```

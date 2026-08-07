@@ -10,6 +10,19 @@
 >
 > 中文版：[../README.md](../README.md)
 
+## Effect Preview (Live Deployment)
+
+> After deployment, the companion dashboards (standalone repo `dgx-spark-2-deepseek-flash-dashboard`)
+> show live status. Screenshots below are from a real environment:
+> **60–70 tok/s (single session)**, GPU **~70°C**, hours-long runs without crashes;
+> full record in [chapter 8.6](docs/08-verify.md).
+
+![Panel preview 1 — real-time overview](../docs/perf/vibe-panel-1.png)
+
+![Panel preview 2 — GPU/host & throughput](../docs/perf/vibe-panel-2.png)
+
+![Panel preview 3 — performance details](../docs/perf/vibe-panel-3.png)
+
 ## 1. Architecture and Results
 
 ```
